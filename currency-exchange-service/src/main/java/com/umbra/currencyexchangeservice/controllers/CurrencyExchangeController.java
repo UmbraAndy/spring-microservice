@@ -5,11 +5,10 @@ import com.umbra.currencyexchangeservice.models.dto.CurrencyExchangeDTO;
 import com.umbra.currencyexchangeservice.repository.CurrencyExchangeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/currency-exchange-service")
 public class CurrencyExchangeController {
 
     @Autowired
@@ -18,7 +17,7 @@ public class CurrencyExchangeController {
     @Autowired
     private CurrencyExchangeRepository currencyExchangeRepository;
 
-    @GetMapping("/currency-exchange-service/from/{fromCurrency}/to/{toCurrency}")
+    @GetMapping("/from/{fromCurrency}/to/{toCurrency}")
     public CurrencyExchangeDTO getExchange(
             @PathVariable("fromCurrency") String fromCurrency,
             @PathVariable("toCurrency") String toCurrency) {
